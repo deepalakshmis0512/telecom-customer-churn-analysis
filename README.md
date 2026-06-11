@@ -1,55 +1,40 @@
 # Telecom Customer Analytics: Call Center Performance & Customer Churn Dashboard
 
 ##  Project Overview
-This project focuses on building an end-to-end data analytics and business intelligence solution for a major telecom corporation using Power BI. The analysis is divided into two operational segments: evaluating Call Center performance metrics to optimize customer service workflows, and analyzing historical Customer Churn data to establish risk mitigation strategies and minimize revenue loss.
+This project delivers an end-to-end business intelligence and data analytics solution developed in Power BI for a major telecom corporation. The analytical framework is split into two strategic streams: optimizing frontline customer service workflows through Call Center Performance Analytics, and identifying financial risk exposure through data-driven Customer Churn & Risk Analysis.
 
 ---
 
 ## Part A: Call Center Performance Analytics 
 
-###  Key Performance Indicators (KPIs) & Metrics Evaluated
-Call Volume Metrics: Analyzed total inbound calls against successful resolutions to evaluate agent throughput.
-Average Speed of Answer (ASA): Measures the average latency in seconds before an agent accepts an incoming call.
-Customer Satisfaction (CSAT): Tracks overall customer approval percentages filtered across specialized service topics.
-Operational Knowledge Gaps: Evaluated talk durations across both successfully resolved and unresolved tickets to identify training mismatches.
+### ⚙️ Data Pre-processing & Feature Engineering
+* **Data Cleansing:** Standardized text fields, eliminated duplicate entries, and utilized Power Query's Trim function to remove trailing whitespaces from structural columns.
+* **Format Standardization:** Transformed the average talk duration from an un-calculable time stamp into a uniform integer measuring total elapsed seconds using specialized split-column delimiter transformations in Power Query.
+* **Agent Performance Tiering:** Implemented conditional logic to dynamically categorize agent response latency into three strict operational tiers: GOOD (under 40 seconds), NEEDS IMPROVEMENT (40 to 79 seconds), and POOR (80 seconds or deeper).
 
-###  Data Pre-processing & Feature Engineering
-* **Data Cleansing:** Implemented data validation protocols in Power Query to eliminate empty rows, drop duplicates, and trim trailing whitespaces from structural columns.
-* **Time Scale Transformations:** Converted the baseline `AvgTalkDuration` from a time stamp format into a uniform integer value measuring total elapsed seconds using custom delimiter splitting algorithms.
-* **Agent Performance Categorization:** Created a conditional metric branch to automatically flag speed-of-answer thresholds into operational tiers:
-  * **GOOD:** Answered in less than 40 seconds.
-  * **NEEDS IMPROVEMENT:** Answered between 40 and 79 seconds.
-  * **POOR:** Response latency exceeding 80 seconds.
+### Core Operational Insights & Observations
+* **Streaming Resolution Bottlenecks:** Out of 4,504 total calls, 408 concluded without resolution. Cross-filtering identified Streaming Services as the leading source of customer friction, pinpointing an immediate need for targeted technical support training.
+* **Agent Efficiency Disparities:** Performance tracking isolated individual latency bottlenecks. Becky demonstrated peak operational efficiency with the fastest average response rate of 65.33 seconds, while Joe recorded the slowest at 70.99 seconds.
+* **Systemic Technical Knowledge Gaps:** Talk duration analysis revealed that unresolved calls averaged 223 seconds, which is virtually identical to the length of successfully resolved calls at 225 seconds. This shows that agents are exhausting significant call time without successfully resolving the underlying customer issues.
 
+---
 
-Core Operational Insights
-Resolution Bottlenecks: Out of 4,504 calls, 408 concluded unresolved. Stacked visualization identified Streaming Services as the leading source of customer friction.
+## Part B: Customer Churn & Risk Analysis 
 
-Agent Performance Latency: Individual tracking showed Becky had the fastest average pick-up rate (65.33s), while Joe recorded the slowest (70.99s).
+###  Lifecycle Tenure Segmentation
+To effectively track customer attrition across chronological milestones, raw customer tenure datasets were mathematically grouped into structured, annual 12-month fiscal blocks using optimized conditional row logic.
 
-Systemic Knowledge Gap: Unresolved calls (~223s) took virtually identical durations as resolved calls (~225s), indicating a critical training gap where agents exhaust call time without resolving the customer issue.
+###  Strategic Customer Churn Observations
+* **Macro Churn Footprint:** Out of 7,032 total active accounts, 1,869 customers transitioned into churn status, establishing a critical company-wide customer churn rate of 26.58%.
+* **Financial Risk Exposure:** The cumulative structural revenue loss stemming directly from the churned user segment is projected at a substantial 2.86 Million Rupees.
+* **Payment Pipeline Friction:** Transactional gateway analysis indicated a severe operational vulnerability within the Electronic Check payment option, which alone accounted for 57.3% of all churned accounts.
+* **Infrastructure Deficiencies:** High-speed network segmentation revealed that 69% of exiting subscribers were bound to Fiber Optic internet packages, highlighting potential service reliability issues or uncompetitive pricing models.
+* **Technical Support Thresholds:** Customer escalation tickets showed a direct correlation with user attrition. Exactly 100% of subscribers who recorded 8 or 9 individual technical troubleshooting requests completely churned out of the company ecosystem.
+* **Volatile Onboarding Window:** Attrition heavily peaks during the initial adoption lifecycle phase, with nearly 1,000 accounts churning within the very first 0-11 month tenure window.
 
-Customer Churn & Risk Analysis 
-Lifecycle Binning (DAX)
-To group customer tenures into structured 12-month annual fiscal blocks:
+---
 
-
-Strategic Customer Churn Observations
-Macro Footprint: Out of 7,032 accounts, 1,869 completely churned—establishing a high company-wide baseline churn rate of 26.58%.
-
-Financial Risk Exposure: Total cumulative revenue lost directly to the churned user segment reaches an estimated 2.86 Million Rupees.
-
-Payment Pipeline Friction: Customers utilizing the Electronic Check payment gateway represented a staggering 57.3% of all churned accounts.
-
-Infrastructure Deficiencies: High-speed network analysis revealed that 69% of exiting subscribers used Fiber Optic packages, highlighting possible regional reliability/pricing friction.
-
-Support Escalation Deflection: 100% of subscribers who recorded 8 or 9 separate technical troubleshooting requests completely churned out.
-
-Volatile Onboarding Window: Customer attrition peaks rapidly within the first year, with nearly 1,000 accounts churning in the 0-11 month tenure block.
-
-Tool Stack
-BI Architecture Engine: Power BI Desktop
-
-Data Transformation Engine: Power Query Editor
-
-Statistical Language: Data Analysis Expressions (DAX)
+##  Tool Stack & Architecture
+* **BI Architecture Engine:** Power BI Desktop
+* **Data Transformation Engine:** Power Query Editor
+* **Data Source Layer:** Microsoft Excel Workbooks
