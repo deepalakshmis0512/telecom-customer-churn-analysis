@@ -21,14 +21,6 @@ Operational Knowledge Gaps: Evaluated talk durations across both successfully re
   * **NEEDS IMPROVEMENT:** Answered between 40 and 79 seconds.
   * **POOR:** Response latency exceeding 80 seconds.
 
-### Advanced DAX Metrics Developed
-* **Average Speed of Answer (ASA):**
-  ```dax
-  ASA = 
-  VAR AnsweredCalls = FILTER('Sheet1', 'Sheet1'[Answered (Y/N)]="Y") 
-  RETURN (DIVIDE(SUMX(AnsweredCalls, 'Sheet1'[Speed of answer in seconds]), COUNTROWS(AnsweredCalls)))
-  Overall Customer Satisfaction (CSAT %):
-
 
 Core Operational Insights
 Resolution Bottlenecks: Out of 4,504 calls, 408 concluded unresolved. Stacked visualization identified Streaming Services as the leading source of customer friction.
@@ -41,9 +33,7 @@ Customer Churn & Risk Analysis
 Lifecycle Binning (DAX)
 To group customer tenures into structured 12-month annual fiscal blocks:
 
-Code snippet
-Tenure_bins = INT('ChurnSheet'[tenure] / 12) * 12
-Tenure_Label = 'ChurnSheet'[Tenure_bins] & "-" & 'ChurnSheet'[Tenure_bins] + 11
+
 Strategic Customer Churn Observations
 Macro Footprint: Out of 7,032 accounts, 1,869 completely churned—establishing a high company-wide baseline churn rate of 26.58%.
 
